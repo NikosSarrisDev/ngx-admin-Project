@@ -38,38 +38,6 @@ export class BeachesInfoComponent implements OnInit {
   }
 
   // Make a Newform Funtion
-  newForm() {
-    // this.windowRef = this.windowService.open(BeachFormComponent);
-    const demoWindow = this.windowService.open(BeachFormComponent);
-    demoWindow.onClose.subscribe(resp => {
-      console.log('test');
-    })
-    // this.windowRef.onClose.subscribe(response => {
-    //   if (response) {
-    //     this.httpServise.fetchBeach()
-    //       .pipe(takeUntil(this.destoyed))
-    //       .subscribe((resp: any) => {
-    //         this.loading = false;
-    //         console.log(resp);
-    //       },
-    //         error => {
-    //         if (this.windowRef) {
-    //           this.windowRef.close();
-    //         }
-    //         this.loading = false;
-    //         });
-    //   }
-    // });
-  }
-
-  onBeachFetch() {
-    this.httpServise.fetchBeach();
-  }
-
-  onBeachCreate(beaches: any) {
-    this.httpServise.createBeach(beaches);
-    console.log(beaches);
-  }
 
   private EditBeatch() {
     // this.loading = true;

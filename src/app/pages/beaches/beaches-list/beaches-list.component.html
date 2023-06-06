@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <nb-card-header>
     <div class="row">
       <div class="col-md-6">
@@ -37,6 +37,14 @@
             <!--              <h5>{{beach.category}}</h5>-->
             <!--            </div>-->
             <!--          </div>-->
+<!--            <div>-->
+<!--              <p><b>Τοποθεσία {{beach.location.lat}}</b></p>-->
+<!--              <p><b>Τοποθεσια {{beach.location.lng}}</b></p>-->
+<!--              <p><b>Γλώσσα {{beach.language}}</b></p>-->
+<!--              <p><b>Αναγνωριστικό {{beach._id}}</b></p>-->
+<!--              <p><b>Εικόνες {{beach.images}}</b></p>-->
+<!--              <p><b>Ετικέτες {{beach.tags}}</b></p>-->
+<!--            </div>-->
 
             <div class="row">
               <div class="col col-sm-2 col-md-2">
@@ -60,9 +68,22 @@
                 <!--                </div>-->
                 <!--              </div>-->
               </div>
-              <div style="align-self: center;" class="col col-sm-2 col-md-1">
-                <h3 style="font-size: 18px">{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</h3>
+              <div class="col col-sm-2 col-md-1" style="display: grid;grid-template-rows: auto auto;font-family: Roboto,Arial,sans-serif;">
+                <a style="font-size: 18px;width: 240px;grid-row: 1;font-family: Roboto,Arial,sans-serif;">{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</a>
+                <span style="font-size: 12px;grid-row: 2;">{{beach.category}}</span>
               </div>
+<!--              .container {-->
+<!--              display: grid;-->
+<!--              grid-template-rows: auto auto; /* Define two rows of auto height */-->
+<!--              }-->
+
+<!--              .element1 {-->
+<!--              grid-row: 1; /* Position element 1 in the first row */-->
+<!--              }-->
+
+<!--              .element2 {-->
+<!--              grid-row: 2; /* Position element 2 in the second row */-->
+<!--              }-->
               <div style="align-self: center; text-align: end" class="col col-sm-3 col-md-9">
                 <nb-icon icon="arrow-ios-forward-outline"></nb-icon>
               </div>
