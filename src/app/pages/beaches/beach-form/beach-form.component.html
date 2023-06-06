@@ -1,0 +1,108 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col">
+        <legend *ngIf="!editData">Προσθήκη νέας Παραλίας</legend>
+        <legend *ngIf="editData">Επεξεργασίας Παραλίας</legend>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <form (ngSubmit)="submit()" [formGroup]="form">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="label">Ονομασία Παραλιάς:</label>
+            <span class="required-asterisk">*</span>
+            <input formControlName="name" type="text" nbInput fullWidth placeholder="Ονομασία Παραλίας">
+            <div style="padding-top: 3px" *ngFor="let error of errorMessages.name">
+              <div *ngIf="form.get('name').hasError(error.type) && (form.get('name').dirty || form.get('name').touched)"
+                   class="alert alert-danger">
+                <small class="error-message">{{error.message}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="label">Κατηγορία Παραλίας</label>
+            <span class="required-asterisc">*</span>
+            <input formControlName="category" type="text" nbInput fullWidth placeholder="Κατηγορία">
+            <div style="padding-top: 3px" *ngFor="let error of errorMessages.name">
+              <div
+                *ngIf="form.get('category').hasError(error.type) && (form.get('category').dirty || form.get('category').touched)"
+                class="alert alert-danger">
+                <small class="error-message">{{error.message}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--      Type-->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="label">Τύπος Παραλίας</label>
+            <span class="required-asterisc">*</span>
+            <input formControlName="type_of_Beach" type="text" nbInput fullWidth placeholder="Τύπος">
+            <div style="padding-top: 3px" *ngFor="let error of errorMessages.name">
+              <div
+                *ngIf="form.get('type_of_Beach').hasError(error.type) && (form.get('type_of_Beach').dirty || form.get('type_of_Beach').touched)"
+                class="alert alert-danger">
+                <small class="error-message">{{error.message}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="label">Φωτογραφία Παραλίας</label>
+            <span class="required-asterisc">*</span>
+            <input formControlName="thumbnail" type="text" nbInput fullWidth placeholder="Φωτογραφία Παραλίας">
+            <div style="padding-top: 3px" *ngFor="let error of errorMessages.name">
+              <div
+                *ngIf="form.get('thumbnail').hasError(error.type) && (form.get('thumbnail').dirty || form.get('thumbnail').touched)"
+                class="alert alert-danger">
+                <small class="error-message">{{error.message}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--      <div class="row">-->
+      <!--        <div class="col">-->
+      <!--          <div class="form-group">-->
+      <!--            <label class="label">Εικόνες Παραλίας</label>-->
+      <!--            <span class="required-asterisc"></span>-->
+      <!--            <input formControlName="category" type="text" nbInput fullWidth placeholder="Εικόνες">-->
+      <!--            <div style="padding-top: 3px" *ngFor="let error of errorMessages.name">-->
+      <!--              <div *ngIf="form.get('category').hasError(error.type) && (form.get('category').dirty || form.get('category').touched)" class="alert alert-danger">-->
+      <!--                <small class="error-message">{{error.message}}</small>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div style="text-align:center" class="col">
+        <button (click)="closeWindow()" style="text-transform: capitalize" type="button" nbButton status="danger">
+          Κλείσιμο
+        </button>
+      </div>
+      <div style="text-align:center" class="col">
+        <button [disabled]="!form.valid" (click)="submit()" style="text-transform: capitalize" type="submit" nbButton
+                status="success">
+          Υποβολή
+        </button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>
+

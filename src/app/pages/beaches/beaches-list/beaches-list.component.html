@@ -1,0 +1,94 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-md-6">
+        <legend>Λίστα Παραλιών</legend>
+      </div>
+      <div style="text-align: right" class="col-md-2">
+        <button style="text-transform: capitalize" nbButton size="small" status="primary" (click)="newForm()">
+          <nb-icon icon="plus-outline" pack="eva" style="width: 70px;"></nb-icon>
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body [nbSpinner]="loading">
+    <div *ngIf="BeachList.length === 0" class="row">
+      <div style="text-align: center;padding-top: 30px;" class="col">
+        <p>Δεν υπάρχει ακόμα καμία παραλία</p>
+      </div>
+    </div>
+    <div *ngIf="BeachList.length !== 0">
+      <nb-card *ngFor="let beach of BeachList; let i = index" style="border: 2px solid black; border-radius: 10px;">
+        <button class="borderless-button">
+          <nb-card-body>
+            <!--          <div *ngIf="beach.name" class="row">-->
+            <!--&lt;!&ndash;            <div style="align-self: center" class="col col-sm-10 col-md-6">&ndash;&gt;-->
+            <!--&lt;!&ndash;              <h3>{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</h3>&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;            <div style="text-align: end;" class="col col-sm-2 col-md-6">&ndash;&gt;-->
+            <!--&lt;!&ndash;              <button nbButton class="trash-can-symbol">&ndash;&gt;-->
+            <!--&lt;!&ndash;                <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>DELETE&ndash;&gt;-->
+            <!--&lt;!&ndash;              </button>&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--          </div>-->
+
+            <!--          <div class="row">-->
+            <!--            <div class="col">-->
+            <!--              <h5>{{beach.category}}</h5>-->
+            <!--            </div>-->
+            <!--          </div>-->
+
+            <div class="row">
+              <div class="col col-sm-2 col-md-2">
+                <div class="image-container">
+                  <img src="https://api2.kic.uoi.gr/images/beach/resized-{{beach.thumbnail}}"
+                       alt="My Image"
+                       style="width: 150px; height: 100px; border-radius: 10px; margin-left: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 1);">
+                  <span style="width: 67px">
+                    <div *ngIf="beach.type" class="col col-md-1" style="text-align: center;">
+<!--                      <p>-->
+                      <!--                      <span class="data-label">Τύπος</span>-->
+                      <!--                    </p>-->
+                      <p class="data" style="color: #e3dbdb; height: 5px; font-size: 10px"><b>{{beach.type}}</b></p>
+                    </div>
+                  </span>
+                </div>
+
+                <!--              <div class="row">-->
+                <!--                <div class="col">-->
+                <!--                  <h5>{{beach.category}}</h5>-->
+                <!--                </div>-->
+                <!--              </div>-->
+              </div>
+              <div style="align-self: center;" class="col col-sm-2 col-md-1">
+                <h3 style="font-size: 18px">{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</h3>
+              </div>
+              <div style="align-self: center; text-align: end" class="col col-sm-3 col-md-9">
+                <nb-icon icon="arrow-ios-forward-outline"></nb-icon>
+              </div>
+
+              <!--            <div class="row">-->
+              <!--              <div class="col">-->
+              <!--                <h5>{{beach.category}}</h5>-->
+              <!--              </div>-->
+              <!--            </div>-->
+
+              <!--            <div class="col col-sm-2 col-md-2">-->
+              <!--              <div >-->
+              <!--              <button nbButton class="book-open-outline-class">-->
+              <!--                <nb-icon icon="book-open-outline" pack="eva"></nb-icon>INFO-->
+              <!--              </button>-->
+              <!--              </div>-->
+              <!--            </div>-->
+              <!--            <div class="col col-sm-2 col-md-4">-->
+              <!--              <div style="text-align: end;">-->
+              <!--              <button nbButton class="edit-outline">-->
+              <!--                <nb-icon icon="edit-outline" pack="eva"></nb-icon>EDIT-->
+              <!--              </button>-->
+              <!--              </div>-->
+              <!--            </div>-->
+            </div>
+
+          </nb-card-body>
+        </button>
+      </nb-card>

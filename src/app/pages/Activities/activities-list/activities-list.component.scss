@@ -1,0 +1,116 @@
+.hover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.hover-container:hover .hover-text {
+  display: block;
+}
+
+
+//<button nbButton
+//style="position:absolute;
+//background-color: #d51717;
+//color: white; padding: 10px 20px;
+//border: none; border-radius: 5px;
+//font-size: 16px; top: 30px;
+//right: -600px; margin-top: 60px;
+.delete-beach-class-button {
+  position: absolute;
+  background-color: #d51717;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  top: 30px;
+  right: -600px;
+  margin-top: 60px;
+}
+
+.container-center-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height to match your desired container size */
+}
+
+.text {
+  text-align: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container span {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: #133be1;
+  border-radius: 50px;
+  font-size: 14px;
+  text-align: center;
+  width: 150px;
+  //color: #fff;
+  //padding: 5px;
+}
+
+.book-open-outline-class {
+  position: absolute;
+  top: 200px;
+  background-color: #13dae1 !important;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.edit-outline {
+  position: absolute;
+  top: 70px;
+  background-color: #dab72d !important;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  right: 20px;
+}
+
+.trash-can-symbol {
+  background-color: #d51717 !important;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.borderless-button {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+}
+
+.borderless-button:focus {
+  outline: none;
+}
+
+
+.borderless-button:active {
+  outline: none;
+}
