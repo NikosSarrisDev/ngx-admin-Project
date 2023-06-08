@@ -1,115 +1,113 @@
 <nb-card xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <nb-card-header>
-    <div class="row">
-      <div class="col-md-6">
-        <legend>Λίστα Παραλιών</legend>
-      </div>
-      <div style="text-align: right" class="col-md-2">
-        <button style="text-transform: capitalize" nbButton size="small" status="primary" (click)="newForm()">
-          <nb-icon icon="plus-outline" pack="eva" style="width: 70px;"></nb-icon>
+    <div class="row" >
+
+      <div class="col col-md-12">
+<!--        <nb-icon icon="search-outline" pack="eva" style="border: 1px solid #000; height: 25px; width: 30px;"></nb-icon>-->
+<!--        <input style="width: 500px; text-align: center;" type="text" placeholder="Search" [(ngModel)]="searchQuery"-->
+<!--               (keyup)="search()"/>-->
+<!--        <nb-search></nb-search>-->
+        <button type="button" nbSuffix nbButton ghost>
+          <nb-icon icon="search-outline">
+          </nb-icon>
         </button>
+        <input type="text" nbInput fullWidth style="width: 400px;"
+               placeholder="Πληκτρολογίστε όνομα παραλίας" [(ngModel)]="searchQuery" (input)="onSearhcTextChanged()" )>
+
+        <button nbButton status="basic" style="float: right" (click)="ApplyWindow()"><nb-icon icon="funnel"></nb-icon></button>
+<!--        <button style="float: right;" nbButton status="primary" (click)="ApplyWindow()">-->
+<!--          <nb-icon icon="funnel"></nb-icon>-->
+        <nb-autocomplete #autoControl>
+          <nb-option *ngFor="let beach of BeachList | async"
+                     [value]="beach.name">
+            {{ beach.name }}
+          </nb-option>
+        </nb-autocomplete>
+<!--          -->
+<!--        </button>-->
       </div>
     </div>
   </nb-card-header>
   <nb-card-body [nbSpinner]="loading">
-    <div *ngIf="BeachList.length === 0" class="row">
-      <div style="text-align: center;padding-top: 30px;" class="col">
-        <p>Δεν υπάρχει ακόμα καμία παραλία</p>
+    <!--    <div *ngIf="BeachList.length === 0" class="row">-->
+    <!--      <div style="text-align: center;padding-top: 30px;" class="col">-->
+    <!--        -->
+    <!--        <p>Δεν υπάρχει ακόμα καμία παραλία</p>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div *ngIf="BeachList.length === 0"
+         style="text-align: -webkit-center; margin-top: 30px; width: 100%;">
+      <div class="alert alert-primary alert-dismissible d-flex align-items-center fade show titleField"
+           role="alert" style="width: 80%; ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+             class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+          <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </svg>
+        <strong class="mx-2">Δεν έχει καταχωριθεί ακόμα καμία παραλία</strong>
       </div>
     </div>
     <div *ngIf="BeachList.length !== 0">
-      <nb-card *ngFor="let beach of BeachList; let i = index" style="border: 2px solid black; border-radius: 10px;">
-        <button class="borderless-button">
-          <nb-card-body>
-            <!--          <div *ngIf="beach.name" class="row">-->
-            <!--&lt;!&ndash;            <div style="align-self: center" class="col col-sm-10 col-md-6">&ndash;&gt;-->
-            <!--&lt;!&ndash;              <h3>{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</h3>&ndash;&gt;-->
-            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
-            <!--&lt;!&ndash;            <div style="text-align: end;" class="col col-sm-2 col-md-6">&ndash;&gt;-->
-            <!--&lt;!&ndash;              <button nbButton class="trash-can-symbol">&ndash;&gt;-->
-            <!--&lt;!&ndash;                <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>DELETE&ndash;&gt;-->
-            <!--&lt;!&ndash;              </button>&ndash;&gt;-->
-            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
-            <!--          </div>-->
+      <div class="card mb-3" *ngFor="let beach of BeachList; let i = index">
+        <div class="row no-gutters" (click)="readPoi(beach._id)">
+          <div class="col-md-2 card_image" *ngIf="!beach.thumbnail">
+            <div class="rounded-circle bg-secondary text-light d-flex align-items-center justify-content-center"
+                 style="width: 180px; height: 130px;">
+              <img src="../../../../assets/images/default-logo.png" alt="Logo"
+                   class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div *ngIf="beach.thumbnail">
+            <img src="https://api2.kic.uoi.gr/images/beach/resized-{{beach.thumbnail}}"
+                 alt="My Image"
+                 style="width: 170px; height: 120px; border-radius: 10px; margin-left: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 1); margin-top: 15px;">
 
-            <!--          <div class="row">-->
-            <!--            <div class="col">-->
-            <!--              <h5>{{beach.category}}</h5>-->
-            <!--            </div>-->
-            <!--          </div>-->
-<!--            <div>-->
-<!--              <p><b>Τοποθεσία {{beach.location.lat}}</b></p>-->
-<!--              <p><b>Τοποθεσια {{beach.location.lng}}</b></p>-->
-<!--              <p><b>Γλώσσα {{beach.language}}</b></p>-->
-<!--              <p><b>Αναγνωριστικό {{beach._id}}</b></p>-->
-<!--              <p><b>Εικόνες {{beach.images}}</b></p>-->
-<!--              <p><b>Ετικέτες {{beach.tags}}</b></p>-->
-<!--            </div>-->
-
-            <div class="row">
-              <div class="col col-sm-2 col-md-2">
-                <div class="image-container">
-                  <img src="https://api2.kic.uoi.gr/images/beach/resized-{{beach.thumbnail}}"
-                       alt="My Image"
-                       style="width: 150px; height: 100px; border-radius: 10px; margin-left: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 1);">
-                  <span style="width: 67px">
-                    <div *ngIf="beach.type" class="col col-md-1" style="text-align: center;">
-<!--                      <p>-->
-                      <!--                      <span class="data-label">Τύπος</span>-->
-                      <!--                    </p>-->
-                      <p class="data" style="color: #e3dbdb; height: 5px; font-size: 10px"><b>{{beach.type}}</b></p>
-                    </div>
-                  </span>
-                </div>
-
-                <!--              <div class="row">-->
-                <!--                <div class="col">-->
-                <!--                  <h5>{{beach.category}}</h5>-->
-                <!--                </div>-->
-                <!--              </div>-->
-              </div>
-              <div class="col col-sm-2 col-md-1" style="display: grid;grid-template-rows: auto auto;font-family: Roboto,Arial,sans-serif;">
-                <a style="font-size: 18px;width: 240px;grid-row: 1;font-family: Roboto,Arial,sans-serif;">{{beach.name.charAt(0).toUpperCase() + beach.name.slice(1)}}</a>
-                <span style="font-size: 12px;grid-row: 2;">{{beach.category}}</span>
-              </div>
-<!--              .container {-->
-<!--              display: grid;-->
-<!--              grid-template-rows: auto auto; /* Define two rows of auto height */-->
-<!--              }-->
-
-<!--              .element1 {-->
-<!--              grid-row: 1; /* Position element 1 in the first row */-->
-<!--              }-->
-
-<!--              .element2 {-->
-<!--              grid-row: 2; /* Position element 2 in the second row */-->
-<!--              }-->
-              <div style="align-self: center; text-align: end" class="col col-sm-3 col-md-9">
-                <nb-icon icon="arrow-ios-forward-outline"></nb-icon>
-              </div>
-
-              <!--            <div class="row">-->
-              <!--              <div class="col">-->
-              <!--                <h5>{{beach.category}}</h5>-->
-              <!--              </div>-->
-              <!--            </div>-->
-
-              <!--            <div class="col col-sm-2 col-md-2">-->
-              <!--              <div >-->
-              <!--              <button nbButton class="book-open-outline-class">-->
-              <!--                <nb-icon icon="book-open-outline" pack="eva"></nb-icon>INFO-->
-              <!--              </button>-->
-              <!--              </div>-->
-              <!--            </div>-->
-              <!--            <div class="col col-sm-2 col-md-4">-->
-              <!--              <div style="text-align: end;">-->
-              <!--              <button nbButton class="edit-outline">-->
-              <!--                <nb-icon icon="edit-outline" pack="eva"></nb-icon>EDIT-->
-              <!--              </button>-->
-              <!--              </div>-->
-              <!--            </div>-->
+            <div
+              style="background-color: #3f4fda; height: 20px; width: 80px; border-radius: 15px; position: absolute;top: 105px; left: 130px;">
+              <p style="color: #e3dbdb; height: 5px; font-size: 10px; text-align: center;"><b>{{beach.type}}</b></p>
             </div>
 
-          </nb-card-body>
-        </button>
-      </nb-card>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 *ngIf="!beach.name" class="card-title">Δεν έχει καταχωρηθεί όνομα.</h5>
+              <h5 *ngIf="beach.name" class="header">{{beach.name}}</h5>
+              <p *ngIf="!beach.category" class="card-text">Δεν έχει καταχωρηθεί κατηγορία.</p>
+              <p *ngIf="beach.category"
+                 class="sub-header">{{beach.category[0].charAt(0).toUpperCase() + beach.category[0].slice(1)}}
+                | {{beach.type[0].charAt(0).toUpperCase() + beach.type[0].slice(1)}}</p>
+            </div>
+          </div>
+          <div class="card_icon">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<ng-template #contentTemplate>
+  <form [formGroup]="filtersForm" (ngSubmit)="submitFilters()">
+    <p style="color: black">Characteristic of beach:</p>
+    <div class="form-check" *ngFor="let filter of categoryFilters">
+      <input formControlName="category" class="form-check-input" type="radio" [name]=filter.name
+             [value]=filter.value [id]=filter.value>
+      <label class="form-check-label" [for]=filter.value>{{filter.title}}</label>
+      <div class="mb-2"></div>
+    </div>
+    <hr>
+    <p style="color: black">Type of beach:</p>
+    <div class="form-check" *ngFor="let filter of typeFilters">
+      <input formControlName="type" class="form-check-input" type="radio" [name]=filter.name
+             [value]=filter.value [id]=filter.value>
+      <label class="form-check-label" [for]=filter.value>{{filter.title}}</label>
+      <div class="mb-2"></div>
+    </div>
+    <div style="text-align: right; ">
+      <div >
+        <button type="button" nbButton (click)="reset_Filter()" style="text-transform: capitalize; margin-right: 10px; border-color: lightgrey;" status="basic-outline">Reset</button>
+        <button type="submit" nbButton style="text-transform: capitalize; margin-right: 10px" status="success">Submit</button>
+      </div>
+    </div>
+  </form>
+</ng-template>

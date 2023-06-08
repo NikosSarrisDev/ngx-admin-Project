@@ -1,109 +1,71 @@
+@import 'bootstrap/scss/mixins/breakpoints';
+@import '@nebular/theme/styles/global/breakpoints';
 
-
-.hover-text {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-
-//<button nbButton
-//style="position:absolute;
-//background-color: #d51717;
-//color: white; padding: 10px 20px;
-//border: none; border-radius: 5px;
-//font-size: 16px; top: 30px;
-//right: -600px; margin-top: 60px;
-.delete-beach-class-button {
-  position: absolute;
-  background-color: #d51717;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  top: 30px;
-  right: -600px;
-  margin-top: 60px;
-}
-
-.container-center-type {
+nb-tabset {
+  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Adjust the height to match your desired container size */
+  flex-direction: column;
 }
 
-.text {
-  text-align: center;
+:host ::ng-deep ngx-tab1, :host ::ng-deep ngx-tab2 {
+  display: block;
+  padding: 1rem 2rem;
 }
 
-.image-container {
+.card {
   position: relative;
-  display: inline-block;
+  border-radius: 10px;
 }
 
-.image-container span {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  background-color: #133be1;
-  border-radius: 50px;
-  font-size: 14px;
-  text-align: center;
-  width: 150px;
-  //color: #fff;
-  //padding: 5px;
+.card_image {
+  place-self: center;
+  padding-left: 20px;
 }
 
-.book-open-outline-class {
+.card_icon {
   position: absolute;
-  top: 200px;
-  background-color: #13dae1 !important;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.edit-outline {
-  position: absolute;
-  top: 70px;
-  background-color: #dab72d !important;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
   right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.trash-can-symbol {
-  background-color: #d51717 !important;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+.card_icon i {
+  font-size: 20px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: 100%;
+}
+
+.no-gutters {
+  height: 150px !important;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 1px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.sub-header {
   font-size: 16px;
-  margin-top: 20px;
+  font-weight: bold;
+  padding-left: 1px;
 }
 
-.borderless-button {
-  border: none;
-  outline: none;
-  border-radius: 15px;
+.rounded-circle {
+  border-radius: 20px !important;
 }
 
-.borderless-button:focus {
-  outline: none;
-}
-
-
-.borderless-button:active {
-  outline: none;
+@include media-breakpoint-down(sm) {
+  .control-item {
+    display: none;
+  }
+  .user-action {
+    border: none;
+    padding: 0;
+  }
 }

@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BeachFormComponent} from "../beach-form/beach-form.component";
 import {Subject} from "rxjs";
 import {error} from "protractor";
+import {FormGroup} from "@angular/forms";
 
 
 // import { Beach } from 'nope';
@@ -23,6 +24,7 @@ export class BeachesInfoComponent implements OnInit {
   confirmRef: NbWindowRef<any>;
   BeachList: BeachesInfoList[] = [];
   loading = false;
+  form: FormGroup;
 
   constructor(private http: HttpClient,
               private httpServise: BeachesService,
@@ -30,7 +32,7 @@ export class BeachesInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpServise.fetchBeach().subscribe((resp: any) => {
+    this.httpServise.fetchBeach('', '').subscribe((resp: any) => {
       // console.log(resp.payload.data);
       this.BeachList = resp.payload.data;
       console.log(this.BeachList);
@@ -41,7 +43,7 @@ export class BeachesInfoComponent implements OnInit {
 
   private EditBeatch() {
     // this.loading = true;
-    this.httpServise.fetchBeach().subscribe((beaches) => {
+    this.httpServise.fetchBeach('', '').subscribe((beaches) => {
       // this.allBeaches = beaches;
       // this.loading = false;
     });

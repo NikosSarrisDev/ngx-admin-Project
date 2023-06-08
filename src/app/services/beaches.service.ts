@@ -19,8 +19,22 @@ export class BeachesService {
   }
 
   // Get All Beaches
-  fetchBeach() {
-    return this.http.get<any>(environment.IP + 'beach/?category=&type=')
+  fetchBeach(categoryOfFilter: string, typeOfFilter: string) {
+    return this.http.get<any>(environment.IP + 'beach/?category=' + categoryOfFilter + '&type=' + typeOfFilter)
+      .pipe(map((res: BeachesListRequest) => res));
+  }
+
+  // categoryFilters = [
+  //   {name: 'category', value: 'organised', title: 'Organised'},
+  //   {name: 'category', value: 'discover', title: 'To Discover'},
+  //   {name: 'category', value: 'boat', title: 'By Boat'}];
+  //
+  // typeFilters = [
+  //   {name: 'type', value: 'sand', title: 'Sand'},
+  //   {name: 'type', value: 'shingle', title: 'Pebble'}];
+
+  fetchBeachByFilter(categoryOfFilter: string, typeOfFilter: string) {
+    return this.http.get<any>(environment.IP + `beach/?category=${categoryOfFilter}&type=${typeOfFilter}`)
       .pipe(map((res: BeachesListRequest) => res));
   }
 

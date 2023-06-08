@@ -3,26 +3,59 @@
     <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
-    <a class="logo"  (click)="navigateHome()">Adrina DashBoard</a>
+    <a class="logo" (click)="navigateHome()">Adrina DashBoard</a>
   </div>
-<!--  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">-->
-<!--    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>-->
-<!--  </nb-select>-->
 </div>
 
 <div class="header-container">
   <nb-actions size="small">
-<!---->
 
+    <!-- <nb-action class="control-item">
+      <nb-search type="rotate-layout"></nb-search>
+    </nb-action>
+    <nb-action class="control-item" icon="email-outline"></nb-action>
+    <nb-action class="control-item" icon="bell-outline"></nb-action> -->
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+      <nb-user [nbContextMenu]="userMenu"
+               [onlyPicture]="userPictureOnly"
+               [name]="user?.username"
+               [picture]="user?.picture">
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>
+
+<!--<div class="header-container">-->
+<!--  <nb-actions size="small">-->
 <!--    <nb-action class="control-item">-->
 <!--      <nb-search type="rotate-layout"></nb-search>-->
 <!--    </nb-action>-->
 <!--    <nb-action class="control-item" icon="email-outline"></nb-action>-->
 <!--    <nb-action class="control-item" icon="bell-outline"></nb-action>-->
-    <nb-action>
-      <button nbButton (click)="logout()">
-        <nb-icon  icon="log-in-outline" pack="eva" style="border: 2px solid #000; height: 30px; width: 30px;"></nb-icon>
-      </button>
-    </nb-action>
-  </nb-actions>
-</div>
+<!--    <nb-action>-->
+<!--      <button nbButton (click)="logout()">-->
+<!--        <nb-icon icon="log-in-outline" pack="eva" style="border: 2px solid #000; height: 30px; width: 30px;"></nb-icon>-->
+<!--      </button>-->
+<!--    </nb-action>-->
+<!--    <div class="header-container">-->
+<!--      <nb-actions size="small">-->
+<!--        <nb-action class="user-action" *nbIsGranted="['view', 'user']">-->
+<!--          <nb-user-->
+<!--            [onlyPicture]="userPictureOnly"-->
+<!--            [name]="user?.username"-->
+<!--            [picture]="user?.picture">-->
+<!--          </nb-user>-->
+<!--          &lt;!&ndash;                <button nbButton (click)="logout()">&ndash;&gt;-->
+<!--          &lt;!&ndash;                  <nb-icon  icon="log-in-outline" pack="eva" style="border: 2px solid #000; height: 30px; width: 30px;"></nb-icon>&ndash;&gt;-->
+<!--          &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--        </nb-action>-->
+<!--      </nb-actions>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    <div class="logo-container">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <nb-icon icon="menu-2-outline"></nb-icon>&ndash;&gt;-->
+<!--    &lt;!&ndash;      </a>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <a style="cursor:pointer" class="logo" (click)="navigateHome()">Ko-<span>Meat</span></a>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </nb-actions>-->
+<!--</div>-->

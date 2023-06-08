@@ -4,10 +4,11 @@ import {BeachesListComponent} from './beaches-list/beaches-list.component';
 import {BeachRoutingModule} from './beach-routing.module';
 import {BeachFormComponent} from './beach-form/beach-form.component';
 import {
+  NbAutocompleteModule,
   NbButtonModule,
   NbCardModule,
   NbIconModule,
-  NbInputModule,
+  NbInputModule, NbSearchModule,
   NbSpinnerModule,
   NbTooltipModule
 } from "@nebular/theme";
@@ -32,6 +33,8 @@ import {BeachesInfoComponent} from './beaches-info/beaches-info.component';
     NbButtonModule,
     NbIconModule,
     NbTooltipModule,
+    NbSearchModule,
+    NbAutocompleteModule,
   ],
 })
 export class BeachesModule {
