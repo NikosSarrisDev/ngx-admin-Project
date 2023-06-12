@@ -6,11 +6,11 @@ import {BeachFormComponent} from './beach-form/beach-form.component';
 import {
   NbAutocompleteModule,
   NbButtonModule,
-  NbCardModule,
+  NbCardModule, NbFormFieldModule,
   NbIconModule,
   NbInputModule, NbSearchModule,
   NbSpinnerModule,
-  NbTooltipModule
+  NbTooltipModule,
 } from "@nebular/theme";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BeachesInfoComponent} from './beaches-info/beaches-info.component';
@@ -35,6 +35,7 @@ import {BeachesInfoComponent} from './beaches-info/beaches-info.component';
     NbTooltipModule,
     NbSearchModule,
     NbAutocompleteModule,
+    NbFormFieldModule,
   ],
 })
 export class BeachesModule {

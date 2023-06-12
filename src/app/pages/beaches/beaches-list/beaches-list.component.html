@@ -12,19 +12,17 @@
           </nb-icon>
         </button>
         <input type="text" nbInput fullWidth style="width: 400px;"
-               placeholder="Πληκτρολογίστε όνομα παραλίας" [(ngModel)]="searchQuery" (input)="onSearhcTextChanged()" )>
+               placeholder="Πληκτρολογίστε όνομα παραλίας" [(ngModel)]="searchQuery" matInput>
 
         <button nbButton status="basic" style="float: right" (click)="ApplyWindow()"><nb-icon icon="funnel"></nb-icon></button>
-<!--        <button style="float: right;" nbButton status="primary" (click)="ApplyWindow()">-->
-<!--          <nb-icon icon="funnel"></nb-icon>-->
-        <nb-autocomplete #autoControl>
-          <nb-option *ngFor="let beach of BeachList | async"
-                     [value]="beach.name">
-            {{ beach.name }}
-          </nb-option>
-        </nb-autocomplete>
-<!--          -->
-<!--        </button>-->
+
+        <!--        <mat-autocomplete #auto="matAutocomplete">-->
+        <!--          <mat-option *ngFor="let option of filteredControlOptions | async" [value]="">-->
+        <!--            {{}}-->
+        <!--          </mat-option>-->
+        <!--        </mat-autocomplete>-->
+        <!--          -->
+        <!--        </button>-->
       </div>
     </div>
   </nb-card-header>
@@ -62,10 +60,10 @@
                  alt="My Image"
                  style="width: 170px; height: 120px; border-radius: 10px; margin-left: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 1); margin-top: 15px;">
 
-            <div
-              style="background-color: #3f4fda; height: 20px; width: 80px; border-radius: 15px; position: absolute;top: 105px; left: 130px;">
-              <p style="color: #e3dbdb; height: 5px; font-size: 10px; text-align: center;"><b>{{beach.type}}</b></p>
-            </div>
+            <!--            <div-->
+            <!--              style="background-color: #3f4fda; height: 20px; width: 80px; border-radius: 15px; position: absolute;top: 105px; left: 130px;">-->
+            <!--              <p style="color: #e3dbdb; height: 5px; font-size: 10px; text-align: center;"><b>{{beach.type}}</b></p>-->
+            <!--            </div>-->
 
           </div>
           <div class="col-md-8">
@@ -74,8 +72,12 @@
               <h5 *ngIf="beach.name" class="header">{{beach.name}}</h5>
               <p *ngIf="!beach.category" class="card-text">Δεν έχει καταχωρηθεί κατηγορία.</p>
               <p *ngIf="beach.category"
-                 class="sub-header">{{beach.category[0].charAt(0).toUpperCase() + beach.category[0].slice(1)}}
-                | {{beach.type[0].charAt(0).toUpperCase() + beach.type[0].slice(1)}}</p>
+                 class="sub-header">
+                <nb-icon icon="pricetags-outline"></nb-icon>
+                {{beach.category[0].charAt(0).toUpperCase() + beach.category[0].slice(1)}}
+                <nb-icon icon="pricetags-outline"></nb-icon>
+                {{beach.type[0].charAt(0).toUpperCase() + beach.type[0].slice(1)}}</p>
+              <!--              <p *ngIf="beach.type" class="sub-header"><nb-icon></nb-icon>{{beach.type[0].charAt(0).toUpperCase() + beach.type[0].slice(1)}}</p>-->
             </div>
           </div>
           <div class="card_icon">
